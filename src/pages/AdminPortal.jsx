@@ -30,11 +30,11 @@ function AdminPortal() {
       }
 
       await response.json()
-      setProducts(products.filter((item) => item.id !== product.id))
+      setProducts((prevProducts) => prevProducts.filter((item) => item.id !== product.id))
       alert('Product deleted successfully!')
     } catch (error) {
       console.error('Failed to delete product:', error)
-      alert('Could not delete product. Please try again.')
+      alert('Please reload page')
     }
   }
 

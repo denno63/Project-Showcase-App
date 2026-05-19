@@ -35,7 +35,7 @@ function ProductPage() {
 
   return (
     <>
-      <Navbar />
+        <Navbar />
       <main className="catalog-page">
         <section className="catalog-hero">
           <div className="hero-content">
