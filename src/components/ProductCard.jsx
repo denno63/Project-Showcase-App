@@ -1,3 +1,6 @@
+import { useContext } from "react";
+import ProductContext from "../context/Products/ProductContext";
+
 function ProductCard({ product }) {
   const stock = Number.isFinite(Number(product.stock)) ? Number(product.stock) : 12;
   const rating = typeof product.rating === "object" ? product.rating?.rate : product.rating;
@@ -7,6 +10,8 @@ function ProductCard({ product }) {
     currency: "USD",
     maximumFractionDigits: 0,
   }).format(Number(product.price) || 0);
+
+  const [addToCart] = useContext(ProductContext);
 
   function stockStatus() {
     if (stock === 0) {
@@ -51,7 +56,10 @@ function ProductCard({ product }) {
 
         <div className="product-card-footer">
           <strong>{price}</strong>
-          <button type="button">View</button>
+          <div style={{display: 'flex', gap: '8px'}}>
+            <button type="button">View</button>
+            <button type="button" onClick={() => addToCart(product)}>Buy</button>
+          </div>
         </div>
       </div>
     </article>
