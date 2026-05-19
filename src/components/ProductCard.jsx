@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import Swal from 'sweetalert2';
 import ProductContext from "../context/Products/ProductContext";
 
 function ProductCard({ product }) {
@@ -13,10 +14,15 @@ function ProductCard({ product }) {
 
   const [, , , addToCart] = useContext(ProductContext);
 
-  function handleBuy() {
+  async function handleBuy() {
     if (typeof addToCart === 'function') {
       addToCart(product);
-      alert(`${product.title} added to cart`);
+      await Swal.fire({
+        icon: 'success',
+        title: 'Added to cart',
+        text: `${product.title} was added to your cart.`,
+        confirmButtonText: 'Great',
+      });
     }
   }
 

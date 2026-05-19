@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2'
 import ProductContext from '../context/Products/ProductContext'
 import Navbar from '../components/Navbar'
 
@@ -16,7 +17,17 @@ function AdminPortal() {
   })
 
   async function handleDelete(product) {
-    if (!window.confirm(`Are you sure you want to delete ${product.title}?`)) {
+    const result = await Swal.fire({
+      title: 'Delete product',
+      text: `Are you sure you want to delete ${product.title}?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+      cancelButtonText: 'Cancel',
+      reverseButtons: true,
+    })
+
+    if (!result.isConfirmed) {
       return
     }
 
@@ -31,10 +42,20 @@ function AdminPortal() {
 
       await response.json()
       setProducts((prevProducts) => prevProducts.filter((item) => item.id !== product.id))
-      alert('Product deleted successfully!')
+      await Swal.fire({
+        icon: 'success',
+        title: 'Deleted',
+        text: 'Product deleted successfully!',
+        confirmButtonText: 'Done',
+      })
     } catch (error) {
       console.error('Failed to delete product:', error)
-      alert('Please reload page')
+      await Swal.fire({
+        icon: 'error',
+        title: 'Action failed',
+        text: 'Please reload the page and try again.',
+        confirmButtonText: 'Okay',
+      })
     }
   }
 
@@ -100,10 +121,20 @@ function AdminPortal() {
         product.id === editingProduct.id ? finalProduct : product
       ))
       setEditingProduct(null)
-      alert('Product updated successfully!')
+      await Swal.fire({
+        icon: 'success',
+        title: 'Updated',
+        text: 'Product updated successfully!',
+        confirmButtonText: 'Nice',
+      })
     } catch (error) {
       console.error('Failed to update product:', error)
-      alert('Could not update product. Please try again.')
+      await Swal.fire({
+        icon: 'error',
+        title: 'Update failed',
+        text: 'Could not update product. Please try again.',
+        confirmButtonText: 'Okay',
+      })
     }
   }
 

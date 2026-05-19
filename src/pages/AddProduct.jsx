@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Swal from 'sweetalert2'
 import ProductContext from '../context/Products/ProductContext'
 
 function AddProduct() {
@@ -36,7 +37,12 @@ function AddProduct() {
 
       const newProduct = await response.json()
       setProducts((prevProducts) => [...prevProducts, newProduct])
-      alert('Product added successfully!')
+      await Swal.fire({
+        icon: 'success',
+        title: 'Product added',
+        text: 'Your product was created successfully.',
+        confirmButtonText: 'Awesome',
+      })
       setFormData({
         title: '',
         price: '',
@@ -53,7 +59,12 @@ function AddProduct() {
       navigate('/Admin')
     } catch (error) {
       console.error('Add product failed:', error)
-      alert('Could not add product. Please try again.')
+      await Swal.fire({
+        icon: 'error',
+        title: 'Add failed',
+        text: 'Could not add product. Please try again.',
+        confirmButtonText: 'Okay',
+      })
     }
   }
 
