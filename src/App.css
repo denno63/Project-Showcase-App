@@ -319,6 +319,45 @@ select {
   font-size: 0.94rem;
 }
 
+.swal2-popup {
+  border-radius: 20px !important;
+  background: linear-gradient(180deg, rgba(8,11,16,0.95), rgba(18,24,38,0.96));
+  color: var(--ink);
+  border: 1px solid rgba(248, 244, 236, 0.12) !important;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45) !important;
+}
+
+.swal2-title,
+.swal2-content {
+  color: var(--ink) !important;
+}
+
+.swal2-button {
+  border-radius: 999px !important;
+  padding: 12px 22px !important;
+  font-weight: 800 !important;
+  border: 1px solid transparent !important;
+}
+
+.swal2-styled.swal2-confirm {
+  background: var(--gold) !important;
+  color: #15110a !important;
+}
+
+.swal2-styled.swal2-cancel {
+  background: rgba(248, 244, 236, 0.08) !important;
+  color: var(--ink) !important;
+}
+
+.swal2-icon.swal2-warning {
+  color: #e1b05c !important;
+}
+
+.swal2-icon.swal2-success {
+  color: #85c094 !important;
+}
+
+
 .collection-section {
   padding-top: 76px;
 }

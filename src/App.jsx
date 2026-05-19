@@ -7,6 +7,7 @@ import ProductProvider from "./context/Products/ProductProvider";
 import AdminPortal from "./pages/AdminPortal";
 import NotFound from "./pages/NotFound";
 import AddProduct from "./pages/AddProduct"
+import 'sweetalert2/dist/sweetalert2.min.css';
 import './App.css';
 
 function App() {
