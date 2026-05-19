@@ -20,6 +20,8 @@ function AdminPortal() {
       return
     }
 
+    setProducts((prevProducts) => prevProducts.filter((item) => item.id !== product.id))
+
     try {
       const response = await fetch(`https://fakestoreapi.com/products/${product.id}`, {
         method: 'DELETE'
@@ -30,10 +32,14 @@ function AdminPortal() {
       }
 
       await response.json()
-      setProducts(products.filter((item) => item.id !== product.id))
       alert('Product deleted successfully!')
     } catch (error) {
       console.error('Failed to delete product:', error)
+      setProducts((prevProducts) =>
+        prevProducts.some((item) => item.id === product.id)
+          ? prevProducts
+          : [...prevProducts, product]
+      )
       alert('Could not delete product. Please try again.')
     }
   }

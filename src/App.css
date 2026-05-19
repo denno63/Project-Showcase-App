@@ -718,6 +718,79 @@ select {
   list-style: none;
 }
 
+.add-product-page {
+  min-height: 100vh;
+  padding: 48px 24px 72px;
+  background: radial-gradient(circle at top left, rgba(215, 180, 106, 0.14), transparent 28%),
+              radial-gradient(circle at bottom right, rgba(143, 185, 168, 0.12), transparent 24%),
+              linear-gradient(135deg, #080b10 0%, #10100d 45%, #121721 100%);
+}
+
+.add-product-card {
+  width: min(100%, 760px);
+  margin: 0 auto;
+  padding: 36px;
+  border-radius: 24px;
+  border: 1px solid rgba(248, 244, 236, 0.12);
+  background: rgba(12, 15, 21, 0.94);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.38);
+}
+
+.add-product-title {
+  margin: 0 0 28px;
+  color: var(--ink);
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1.05;
+  text-align: center;
+}
+
+.add-product-form {
+  display: grid;
+  gap: 20px;
+}
+
+.add-product-field {
+  display: grid;
+  gap: 10px;
+}
+
+.add-product-label {
+  color: rgba(248, 244, 236, 0.82);
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.add-product-input {
+  width: 100%;
+  min-height: 54px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(248, 244, 236, 0.16);
+  background: rgba(20, 24, 31, 0.85);
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.add-product-input::placeholder {
+  color: rgba(248, 244, 236, 0.4);
+}
+
+.add-product-input:focus {
+  border-color: rgba(215, 180, 106, 0.8);
+  box-shadow: 0 0 0 4px rgba(215, 180, 106, 0.12);
+  background: rgba(20, 24, 31, 0.98);
+}
+
+.add-product-submit {
+  margin-top: 8px;
+  border-radius: 14px;
+  padding: 16px 20px;
+  font-size: 1rem;
+}
+
 .admin-product-card {
   min-height: 100%;
   display: flex;

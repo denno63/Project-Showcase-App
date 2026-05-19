@@ -11,7 +11,14 @@ function ProductCard({ product }) {
     maximumFractionDigits: 0,
   }).format(Number(product.price) || 0);
 
-  const [addToCart] = useContext(ProductContext);
+  const [, , , addToCart] = useContext(ProductContext);
+
+  function handleBuy() {
+    if (typeof addToCart === 'function') {
+      addToCart(product);
+      alert(`${product.title} added to cart`);
+    }
+  }
 
   function stockStatus() {
     if (stock === 0) {
@@ -58,7 +65,7 @@ function ProductCard({ product }) {
           <strong>{price}</strong>
           <div style={{display: 'flex', gap: '8px'}}>
             <button type="button">View</button>
-            <button type="button" onClick={() => addToCart(product)}>Buy</button>
+            <button type="button" onClick={handleBuy}>Buy</button>
           </div>
         </div>
       </div>
